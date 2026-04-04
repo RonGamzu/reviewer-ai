@@ -18,19 +18,9 @@ Reviewer.AI is an AI-powered mock interview platform designed to help developers
 
 ### Prerequisites
 
-You need two tools installed on your machine before anything else.
+You need the following tools installed on your machine before anything else.
 
-#### 1. Install Git
-Used to clone the repository.
-
-- Download from: https://git-scm.com/downloads
-- Follow the installer for your operating system.
-- Verify the installation by opening a terminal and running:
-  ```bash
-  git --version
-  ```
-
-#### 2. Install Docker Desktop
+#### 1. Install Docker Desktop
 Docker runs all three services (frontend, backend, AI service) in isolated containers. You do not need to install Node.js manually for production — Docker handles everything inside the containers.
 
 - Download from: https://www.docker.com/products/docker-desktop
@@ -54,7 +44,6 @@ The AI service requires a free API key from Google AI Studio to generate and eva
 ### Setup (required for both modes)
 
 #### 1. Clone the repository
-Open a terminal, navigate to the folder where you want to place the project, and run:
 
 ```bash
 git clone https://github.com/RonGamzu/reviewer-ai.git
