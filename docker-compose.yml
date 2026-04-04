@@ -1,0 +1,58 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: reviewer-ai-backend
+    restart: unless-stopped
+    ports:
+      - "${BACKEND_PORT:-3001}:3001"
+    environment:
+      - PORT=3001
+      - JWT_SECRET=${JWT_SECRET}
+      - AI_SERVICE_URL=${AI_SERVICE_URL:-http://ai-service:3002}
+      - AI_SERVICE_SECRET=${AI_SERVICE_SECRET}
+      - DB_PATH=/app/data/database.sqlite
+    volumes:
+      - ./backend-data:/app/data
+    networks:
+      - reviewer-net
+    depends_on:
+      - ai-service
+
+  ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: Dockerfile
+    container_name: reviewer-ai-service
+    restart: unless-stopped
+    ports:
+      - "${AI_SERVICE_PORT:-3002}:3002"
+    environment:
+      - PORT=3002
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - AI_SERVICE_SECRET=${AI_SERVICE_SECRET}
+    networks:
+      - reviewer-net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=${VITE_API_URL:-http://localhost:3001}
+        - VITE_APP_VERSION=${VITE_APP_VERSION:-4.2.0}
+    container_name: reviewer-ai-frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-5173}:80"
+    networks:
+      - reviewer-net
+    depends_on:
+      - backend
+
+networks:
+  reviewer-net:
+    driver: bridge
