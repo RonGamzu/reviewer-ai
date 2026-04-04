@@ -1,0 +1,47 @@
+services:
+  # ── AI Service (Gemini wrapper) ──────────────────────────────────────────────
+  - type: web
+    name: reviewer-ai-service
+    runtime: docker
+    rootDir: ai-service
+    plan: free
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: AI_SERVICE_SECRET
+        sync: false
+
+  # ── Backend API ──────────────────────────────────────────────────────────────
+  - type: web
+    name: reviewer-ai-backend
+    runtime: docker
+    rootDir: backend
+    plan: free
+    envVars:
+      - key: JWT_SECRET
+        sync: false
+      - key: AI_SERVICE_SECRET
+        sync: false
+      - key: AI_SERVICE_URL
+        fromService:
+          type: web
+          name: reviewer-ai-service
+          property: host
+      - key: DB_PATH
+        value: /app/data/database.sqlite
+
+  # ── Frontend (Static Site — always-on, always free) ──────────────────────────
+  - type: web
+    name: reviewer-ai-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: reviewer-ai-backend
+          property: host
+      - key: VITE_APP_VERSION
+        value: 4.2.0
