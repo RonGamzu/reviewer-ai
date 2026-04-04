@@ -1,6 +1,6 @@
 # Reviewer.AI
 
-Reviewer.AI is an AI-powered mock interview platform designed to help developers prepare for technical job interviews. Users register with their profession, years of experience, and tech stack. The system then generates personalized interview questions, evaluates submitted answers in real time using a large language model, and provides a scored feedback report. The platform supports both English and Hebrew (RTL), and allows users to track their interview history and export results as a PDF.
+Reviewer.AI is an AI-powered mock interview platform designed to help developers prepare for technical job interviews. Users register with their profession, years of experience, and tech stack. The system then generates personalized interview questions, evaluates submitted answers in real time using a large language model, and provides a scored feedback report. Users can track their interview history and export results as a PDF.
 
 ---
 
