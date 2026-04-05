@@ -583,6 +583,16 @@ textarea.input {
     gap: 1.25rem !important;
   }
 
+  /* Register page: collapse 2-col grid to single column */
+  .register-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Hide the left-column hero text on mobile — only show the form */
+  .register-layout > div:first-child {
+    display: none !important;
+  }
+
   /* Interview header: wrap on mobile so buttons don't crush the title */
   .interview-header {
     flex-wrap: wrap !important;

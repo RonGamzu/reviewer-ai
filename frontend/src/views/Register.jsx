@@ -83,7 +83,7 @@ export default function Register() {
   const sliderFill = `${(yoe / 20) * 100}%`;
 
   return (
-    <div className="view-root" style={{
+    <div className="view-root register-layout" style={{
       minBlockSize: '100vh',
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
