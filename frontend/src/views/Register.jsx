@@ -181,7 +181,7 @@ export default function Register() {
                 <input
                   className="input input-has-prefix"
                   type="text"
-                  placeholder="neon_curator"
+                  placeholder="User name"
                   value={form.username}
                   onChange={e => update('username', e.target.value)}
                   autoComplete="username"
