@@ -582,4 +582,22 @@ textarea.input {
     align-items: flex-start !important;
     gap: 1.25rem !important;
   }
+
+  /* Interview header: wrap on mobile so buttons don't crush the title */
+  .interview-header {
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+    align-items: flex-start !important;
+  }
+
+  /* Submit bar: hide keyboard hint, stack error above button */
+  .submit-hint {
+    display: none !important;
+  }
+
+  .interview-submit-bar {
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    justify-content: flex-end !important;
+  }
 }

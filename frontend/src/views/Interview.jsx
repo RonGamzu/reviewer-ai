@@ -140,7 +140,7 @@ export default function Interview() {
       <main className="responsive-main" style={{ flex: 1, overflow: 'auto', padding: 'clamp(1.5rem, 3vw, 2.5rem)' }}>
 
         {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBlockEnd: '2rem' }}>
+        <div className="interview-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBlockEnd: '2rem' }}>
           <div>
             <div className="badge badge-secondary" style={{ marginBlockEnd: '0.5rem', display: 'inline-flex', gap: '0.5rem', alignItems: 'center' }}>
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -227,7 +227,7 @@ export default function Interview() {
                 onChange={e => setAnswer(e.target.value)}
                 disabled={submitting || !!result}
               />
-              <div style={{
+              <div className="interview-submit-bar" style={{
                 display: 'flex', justifyContent: 'space-between', alignItems: 'center',
                 padding: '0.875rem 1.25rem',
                 background: 'var(--surface-container)',
@@ -235,7 +235,7 @@ export default function Interview() {
                 borderEndStartRadius: 'var(--radius-lg)',
                 borderEndEndRadius: 'var(--radius-lg)',
               }}>
-                <span style={{ fontSize: '0.75rem', color: 'var(--on-surface-variant)' }}>
+                <span className="submit-hint" style={{ fontSize: '0.75rem', color: 'var(--on-surface-variant)' }}>
                   Press Cmd + Enter to submit
                 </span>
                 {error && <span style={{ fontSize: '0.8125rem', color: 'var(--error)' }}>{error}</span>}
